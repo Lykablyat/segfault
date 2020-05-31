@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+    if(argc != 2)
+    {
+        return(1);
+    }
+
+    for(int n = 1 ; ; n++)
+    {
+        int z = atoi(argv[n]);
+
+        if(z == 0)
+        {
+            return(2);
+        }
+    }
+
+    int x = atoi(argv[1]);
+
+    while(x > 26)
+    {
+        x = x - 26;
+    }
+
+    string y = get_string("plaintext: ");
+
+    printf("ciphertext: ");
+
+    for(int i = 0 ; y[i] != '\0' ; i++)
+    {
+        if(isalpha(y[i]) != 0)
+        {
+            y[i] = y[i] + x;
+        }
+        printf("%c", y[i]);
+    }
+    printf("\n");
+}
